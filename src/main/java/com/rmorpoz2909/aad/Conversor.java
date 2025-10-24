@@ -19,7 +19,7 @@ public class Conversor {
         File xml = new File("alumnos.xml");
 
         try {
-            // Crear CSV de ejemplo si no existe
+            // Crear CSV de ejemplo si no existe.
             if (!Files.exists(csv)) {
                 String contenido = "id,nombre,nota\n1,Ana,8.5\n2,Juan,6.7\n3,Luis,9\n";
                 Files.writeString(csv, contenido, StandardCharsets.UTF_8);

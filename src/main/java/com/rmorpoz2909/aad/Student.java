@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
+@Data //Data nos genera getters, setters automáticamente.
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString

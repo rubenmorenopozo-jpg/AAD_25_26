@@ -11,8 +11,8 @@ public class XMLExporter {
     public static void exportarXML(List<Student> students, File destino) throws IOException {
         //Creamos el objeto XmlMapper, sirve para convertir objetos Java a XML y viceversa.
         XmlMapper xmlMapper = new XmlMapper();
-        //Escribimos la lista de estudiantes en el archivo XML con formato legible.
-        //El PrettPrinter hace que se vea más bonito y legible.
+        //Escribimos la lista de estudiantes en el archivo XML con formato legible
+        //El PrettPrinter hace que se vea más bonito y legible
         xmlMapper.writerWithDefaultPrettyPrinter().writeValue(destino, students);
     }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 public class CSVReader {
 
     public static List<Student> leer(Path ruta) throws IOException {
-        //Creamos la lista vacía de estudiantes
+        //Creamos la lista vacía de estudiantes.
         List<Student> lista = new ArrayList<>();
         //Abrimos el archivo CSV para leerlo línea a línea
         try (BufferedReader br = Files.newBufferedReader(ruta, StandardCharsets.UTF_8)) {

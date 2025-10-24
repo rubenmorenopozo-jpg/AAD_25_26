@@ -13,6 +13,7 @@ public class AadApplication implements CommandLineRunner {
         SpringApplication.run(AadApplication.class, args);
     }
 
+    //Lombok log example
     @Override
     public void run(String... args) throws Exception {
         log.info("Lombok ON");
