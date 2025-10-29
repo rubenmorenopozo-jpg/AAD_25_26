@@ -94,6 +94,7 @@ public class AadApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        //Menu principal
         while (true) {
             int option;
             log.info("Select an option");
