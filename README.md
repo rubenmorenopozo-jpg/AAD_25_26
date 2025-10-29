@@ -17,6 +17,14 @@ Formato de línea en el log:
 
 ---
 
+## Requisitos
+
+- **Java 17+**
+- **Maven 3.8+** (o Gradle, si el proyecto lo usa)
+- Consola/terminal
+
+---
+
 ## Uso del menú
 
 Select an option
