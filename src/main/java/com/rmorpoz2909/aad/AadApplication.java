@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -24,16 +24,15 @@ public class AadApplication implements CommandLineRunner {
 
     public static void addEvent() throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("src/main/resources/app.log", true), charset))) {
-            log.info("Add time and date of the event (dd/MM/yyyy HH:mm:ss):");
-            String date = sc.nextLine();
+            Date now = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            String dateFormate = sdf.format(now);
 
-            log.info("Message event");
+            log.info("Write the event message:");
             String event = sc.nextLine();
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-            LocalDateTime now = LocalDateTime.parse(date, dtf);
 
-            log.info("Date: {}", now);
-            writer.write("[" + now.format(dtf) + "] Usuario: " + event);
+            log.info("Date automatically set: {}", dateFormate);
+            writer.write("[" + dateFormate + "] Usuario: " + event);
             writer.newLine();
         } catch (IOException e) {
             log.error("Error" + e.getMessage());

@@ -1,27 +1,19 @@
-# 📘 README — AAD Application (CLI con Spring Boot)
+# README - ACT_1_5
 
 Aplicación de consola en **Java + Spring Boot** para registrar eventos en un fichero de log, filtrarlos por fecha y
 cambiar la codificación del fichero.
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-- **Añadir evento**: pide fecha/hora y mensaje, y los guarda en `src/main/resources/app.log`.
+- **Añadir evento**: pide fecha/hora y mensaje, y los guarda en src/main/resources/app.log.
 - **Filtrar eventos**: busca en el log por una fecha dada y muestra coincidencias.
-- **Cambiar codificación**: permite alternar entre `UTF-8` e `ISO-8859-1` para leer/escribir el log.
+- **Cambiar codificación**: permite alternar entre UTF-8 e ISO-8859-1 para leer/escribir el log.
 - **Interfaz tipo menú** en consola.
 
 Formato de línea en el log:
 [dd/MM/yyyy HH:mm:ss] Usuario: "Mensaje del evento"
-
----
-
-## 🧱 Requisitos
-
-- **Java 17+**
-- **Maven 3.8+** (o Gradle, si el proyecto lo usa)
-- Consola/terminal
 
 ---
 
