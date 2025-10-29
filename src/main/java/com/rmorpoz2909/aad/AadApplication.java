@@ -16,6 +16,7 @@ import java.util.Scanner;
 @Slf4j
 public class AadApplication implements CommandLineRunner {
     private static Scanner sc = new Scanner(System.in);
+    //Codificación por defecto UTF-8
     private static Charset charset = StandardCharsets.UTF_8;
 
     public static void main(String[] args) {
@@ -24,13 +25,16 @@ public class AadApplication implements CommandLineRunner {
 
     public static void addEvent() throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("src/main/resources/app.log", true), charset))) {
+            // Obtener fecha y hora actuales
             Date now = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
             String dateFormate = sdf.format(now);
 
+            //Pedir al usuario el mensaje del evento
             log.info("Write the event message:");
             String event = sc.nextLine();
 
+            //Muestra la fecha y hora actuales
             log.info("Date automatically set: {}", dateFormate);
             writer.write("[" + dateFormate + "] Usuario: " + event);
             writer.newLine();
@@ -43,16 +47,20 @@ public class AadApplication implements CommandLineRunner {
         log.info("Enter a date of the event for filter");
         String date = sc.nextLine();
 
+        //Encontrar eventos en el archivo de log que coincidan con la fecha introducida.
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/resources/app.log"), charset))) {
+
             String line = "";
-            boolean found = false;
+            boolean found = false; // Variable para ver si se encontraron eventos
             while ((line = reader.readLine()) != null) {
+                // Si la línea contiene la fecha buscada, se muestra
                 if (line.contains("[" + date)) {
                     log.info("Event found : {}", line);
                     found = true;
                 }
             }
 
+            //Si no se encuentra ningun evento, mostrar mensaje
             if (!found) {
                 log.info("No events found for the given date: {}", date);
             }
@@ -70,11 +78,12 @@ public class AadApplication implements CommandLineRunner {
         int option = sc.nextInt();
         switch (option) {
             case 1:
-                charset = StandardCharsets.UTF_8;
+                charset = StandardCharsets.UTF_8; //Cambiar a UTF-8
                 log.info("Select a new charset: {}", charset);
                 break;
             case 2:
-                charset = StandardCharsets.ISO_8859_1;
+                charset = StandardCharsets.ISO_8859_1; //Cambiar a ISO-8859-1
+                log.info("Select a new charset: {}", charset);
                 break;
             default:
                 log.info("Invalid option");
