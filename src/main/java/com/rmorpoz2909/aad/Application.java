@@ -32,14 +32,14 @@ public class Application implements CommandLineRunner {
 		log.info("--- INICIANDO PRUEBAS DE LA ACTIVIDAD 3.1 ---");
 
 		// 1. Crear un Alumno
-		Student miriam = new Student();
-		miriam.setNif("66280457T");
-		miriam.setName("Miriam");
-		miriam.setEmail("miriam@g.educaand.es");
-		miriam.setCourse("DAW");
+		Student carlitos = new Student();
+		carlitos.setNif("66280457T");
+		carlitos.setName("Carlitos cani");
+		carlitos.setEmail("carlitos@g.educaand.es");
+		carlitos.setCourse("DAWN");
 
-		miriam = managementService.createStudent(miriam);
-		log.info("Alumno guardado: {}", miriam);
+		carlitos = managementService.createStudent(carlitos);
+		log.info("Alumno guardado: {}", carlitos);
 
 		// 2. Crear un Módulo (Usando la ruta completa para evitar el error de nombres)
 		com.rmorpoz2909.aad.model.Module prog = new com.rmorpoz2909.aad.model.Module();
@@ -51,7 +51,7 @@ public class Application implements CommandLineRunner {
 		log.info("Módulo guardado: {}", prog);
 
 		// 3. Realizar Matrícula
-		managementService.enrollStudentInModule(miriam.getId(), prog.getId());
+		managementService.enrollStudentInModule(carlitos.getId(), prog.getId());
 		log.info("Matrícula creada correctamente.");
 
 		// 4. Verificación de Rollback
