@@ -6,17 +6,17 @@ import java.util.List;
 
 @Entity
 @Data
-public class Student {
+public class Alumno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nif;
-    private String name;
+    private String nombre;
     private String email;
     private String course;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "Alumno", cascade = CascadeType.ALL)
     private List<Enrollment> enrollments;
 }

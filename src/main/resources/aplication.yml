@@ -1,12 +1,11 @@
-server:
-  port: 8081
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/aad_db
-    username: user
-    password: pass
+    url: jdbc:postgresql://localhost:5432/aad
+    username: postgres
+    password: postgres
     hikari:
       maximum-pool-size: 5
+
   jpa:
     hibernate:
       ddl-auto: create-drop

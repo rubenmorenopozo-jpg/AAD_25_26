@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
-    // Consulta JPQL para filtrar por nota mínima
     @Query("SELECT e FROM Enrollment e WHERE e.finalGrade >= :minGrade")
     List<Enrollment> findByMinFinalGrade(@Param("minGrade") Double minGrade);
 }

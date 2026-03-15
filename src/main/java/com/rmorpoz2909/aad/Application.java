@@ -1,8 +1,8 @@
 package com.rmorpoz2909.aad;
 
 import com.rmorpoz2909.aad.application.ManagementService;
-import com.rmorpoz2909.aad.model.Student;
-import com.rmorpoz2909.aad.repository.StudentRepository;
+import com.rmorpoz2909.aad.model.Alumno;
+import com.rmorpoz2909.aad.repository.AlumnoRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class Application implements CommandLineRunner {
 
 	private final ManagementService managementService;
-	private final StudentRepository studentRepository;
+	private final AlumnoRepository AlumnoRepository;
 
-	// Inyectamos el servicio y el repositorio por constructor
-	public Application(ManagementService managementService, StudentRepository studentRepository) {
+	public Application(ManagementService managementService, AlumnoRepository AlumnoRepository) {
 		this.managementService = managementService;
-		this.studentRepository = studentRepository;
+		this.AlumnoRepository = AlumnoRepository;
 	}
 
 	public static void main(String[] args) {
@@ -31,17 +30,15 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		log.info("--- INICIANDO PRUEBAS DE LA ACTIVIDAD 3.1 ---");
 
-		// 1. Crear un Alumno
-		Student carlitos = new Student();
+		Alumno carlitos = new Alumno();
 		carlitos.setNif("66280457T");
-		carlitos.setName("Carlitos cani");
+		carlitos.setNombre("Carlitos cani");
 		carlitos.setEmail("carlitos@g.educaand.es");
 		carlitos.setCourse("DAWN");
 
-		carlitos = managementService.createStudent(carlitos);
+		carlitos = managementService.createAlumno(carlitos);
 		log.info("Alumno guardado: {}", carlitos);
 
-		// 2. Crear un Módulo (Usando la ruta completa para evitar el error de nombres)
 		com.rmorpoz2909.aad.model.Module prog = new com.rmorpoz2909.aad.model.Module();
 		prog.setCode("0485");
 		prog.setName("Programación");
@@ -50,12 +47,9 @@ public class Application implements CommandLineRunner {
 		prog = managementService.createModule(prog);
 		log.info("Módulo guardado: {}", prog);
 
-		// 3. Realizar Matrícula
-		managementService.enrollStudentInModule(carlitos.getId(), prog.getId());
+		managementService.enrollAlumnoInModule(carlitos.getId(), prog.getId());
 		log.info("Matrícula creada correctamente.");
 
-		// 4. Verificación de Rollback
-		// Según el PDF, debemos lanzar una excepción para ver cómo Spring deshace todo
 		log.warn("Lanzando error forzado para probar @Transactional...");
 		throw new RuntimeException("Forzando rollback de la transacción");
 	}

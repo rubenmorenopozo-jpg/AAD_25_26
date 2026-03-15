@@ -15,8 +15,8 @@ public class Enrollment {
 
 
     @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
+    @JoinColumn(name = "Alumno_id")
+    private Alumno Alumno;
 
     @ManyToOne
     @JoinColumn(name = "module_id")
